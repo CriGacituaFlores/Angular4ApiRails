@@ -1,0 +1,151 @@
+<h1>Create a Proposal</h1>
+
+<div>
+    <form #proposalForm="ngForm">
+        <div class="form-group">
+            <label for="customer">
+                Customer Name
+            </label>
+            <input type="text"
+                    id="customer"
+                    placeholder="ABC Company"
+                    required
+                    name="customer"
+                    #customer="ngModel"
+                    [(ngModel)]="proposal.customer"
+            
+            >
+            <div [hidden]="customer.valid || customer.pristine">
+                Customer name is required
+            </div>
+        </div>
+
+        <div class="form-group">
+                <label for="portfolio_url">
+                    Portfolio Url
+                </label>
+                <input type="text"
+                        id="portfolio_url"
+                        placeholder="ABC Company"
+                        required
+                        name="portfolio_url"
+                        #portfolio_url="ngModel"
+                        [(ngModel)]="proposal.portfolio_url"
+                
+                >
+                <div [hidden]="portfolio_url.valid || portfolio_url.pristine">
+                    Portfolio Url is required
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label for="tools">
+                    Tools for use
+                </label>
+                <input type="text"
+                        id="tools"
+                        placeholder="Ruby on rails, angular, etc"
+                        required
+                        name="tools"
+                        #portfolio_url="ngModel"
+                        [(ngModel)]="proposal.tools"
+                
+                >
+                <div [hidden]="customer.valid || customer.pristine">
+                        Tools is required
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label for="estimated_hours">
+                    Estimated hours
+                </label>
+                <input type="number"
+                        id="estimated_hours"
+                        placeholder="Estimated hours"
+                        required
+                        name="estimated_hours"
+                        #portfolio_url="ngModel"
+                        [(ngModel)]="proposal.estimated_hours"
+                
+                >
+                <div [hidden]="customer.valid || customer.pristine">
+                    EStimated hours is required
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label for="hourly_rate">
+                    Hourly rate
+                </label>
+                <input type="text"
+                        id="hourly_rate"
+                        placeholder="HOurly rate"
+                        required
+                        name="hourly_rate"
+                        #portfolio_url="ngModel"
+                        [(ngModel)]="proposal.hourly_rate"
+                
+                >
+                <div [hidden]="customer.valid || customer.pristine">
+                   HOurly rate is required
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label for="weeks_to_complete">
+                    Weeks to complete
+                </label>
+                <input type="text"
+                        id="weeks_to_complete"
+                        placeholder="ABC Company"
+                        required
+                        name="weeks_to_complete"
+                        #portfolio_url="ngModel"
+                        [(ngModel)]="proposal.weeks_to_complete"
+                
+                >
+                <div [hidden]="customer.valid || customer.pristine">
+                    Weeks to complete is required
+                </div>
+        </div>
+
+        <div class="form-group">
+                <label for="client_email">
+                    Client email <em>(Optional)</em>
+                </label>
+                <input type="text"
+                        id="client_email"
+                        placeholder="Client email"
+                        required
+                        name="client_email"
+                        #portfolio_url="ngModel"
+                        [(ngModel)]="proposal.client_email"
+                
+                >
+        </div>
+    </form>
+</div>
+
+<div>
+    {{proposal.customer}}
+</div>
+
+<div>
+    <p>Hi {{proposal.customer}}</p>
+
+    <p>Blablablablabla <a href="{{proposal.portfolio_url}}">Here.</a> </p>
+
+    <p>Blebleblebleble {{proposal.tools}}</p>
+
+    <p>blablabla</p>
+
+    <p>blablablabla {{proposal.hourly_rate * proposal.estimated_hours}}, blablabla
+        {{proposal.estimated_hours}} bkabkabla
+        {{proposal.hourly_rate}}/hour
+    </p>
+
+    <p></p>
+
+    <p></p>
+</div>
