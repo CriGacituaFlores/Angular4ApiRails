@@ -1,16 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { IDocument } from './document';
+import { DocumentService } from './document.service';
 
 @Component({
   moduleId: module.id,
   selector: 'documents',
-  templateUrl: 'documents.component.html'
+  templateUrl: 'documents.component.html',
+  providers: [
+    DocumentService
+  ]
 })
 
-export class DocumentsComponent {
+export class DocumentsComponent implements OnInit {
   pageTitle: string = "Document Dashboard";
+  documents: IDocument[];
+  errorMessage: string;
+  mode = "Observable";
 
-  documents: IDocument[] = [
+  constructor(private documentService: DocumentService){
+    
+  }
+
+  ngOnInit() {
+    let timer = Observable.timer(0, 5000);
+    timer.subscribe(() => this.getDocuments);
+    this.getDocuments();
+  }
+
+  getDocuments(){
+    this.documentService.getDocuments()
+      .subscribe(documents => this.documents = documents,
+                 error => this.errorMessage = <any>error);
+  }
+
+  documents2: IDocument[] = [
     {
       title: "First",
       description: "Last",
@@ -33,4 +57,5 @@ export class DocumentsComponent {
       image_url: "http://google.cl"
     }
   ];
+
 }
